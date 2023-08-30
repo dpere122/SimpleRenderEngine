@@ -2,4 +2,10 @@ cmake_minimum_required(VERSION 3.5.0)
 
 project(simplerenderengine VERSION 0.1.0)
 
-add_executable(simplerenderengine src/main.cpp)
+find_package(SDL2 REQUIRED COMPONENTS SDL2)
+
+set(MY_SOURCES "src/main.cpp" ${SDL2})
+
+add_executable(simplerenderengine ${MY_SOURCES})
+
+target_link_libraries(simplerenderengine PRIVATE SDL2::SDL2)
